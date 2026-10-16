@@ -23,11 +23,16 @@ app.post('/user', (req, res) => {
   res.send(`Hello, ${name}!`);
 })
 
+
+
 app.get('/user/:id', (req, res) => {
   const id = Number(req.params.id);
   if(!Number(id)) return res.status(400).send('No such user');
   res.send(`User ${id} profile`);
 })
+
+
+
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on ${process.env.PORT}`);
