@@ -4,7 +4,7 @@ const path = require('path')
 const app = express();
 
 function logger(req,res,next){
-  console.log(req.method, req.url );
+  console.log(req.method, req.url, (new Date()) );
   next()
 }
 
@@ -25,7 +25,7 @@ app.post('/user', (req, res) => {
 
 app.get('/user/:id', (req, res) => {
   const id = Number(req.params.id);
-  if(!Number(id)) return res.status(400);
+  if(!Number(id)) return res.status(400).send('No such user');
   res.send(`User ${id} profile`);
 })
 
